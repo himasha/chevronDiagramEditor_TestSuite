@@ -16,7 +16,7 @@
 describe('create chevron diagram - publisher', function() {
     var elements = [];
     beforeEach(function() {
-        // setUpHTMLFixture();
+        elements = [];
     });
     it('Add element to canvas', function() {
         elements.push(("#element"));
@@ -105,6 +105,13 @@ describe('create chevron diagram - publisher', function() {
         expect(propertyList[0].name).toEqual("step1");
         expect(propertyList[0].models).toEqual("process1");
         expect(propertyList[0].information).toEqual("This is step 1");
+    });
+    it('Remove selected element', function() {
+        var element = returnElement();
+        occupiedGridPositions.push(("#element"));
+        expect(occupiedGridPositions.length).toEqual(3);
+        removeElement(element);
+        expect(occupiedGridPositions.length).toEqual(2);
     });
     it('Confirm saved registry location', function() {
         spyOn($, "ajax");
